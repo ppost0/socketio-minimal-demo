@@ -1,5 +1,5 @@
 
-const socket = io('ws://localhost:8080');
+const socket = io('ws://localhost:8088');
 
 socket.on('message', text => {
 
@@ -13,8 +13,15 @@ document.querySelector('button').onclick = () => {
 
     const text = document.querySelector('input').value;
     socket.emit('message', text)
-    
+
 }
+
+document.querySelector('input').addEventListener('keyup', (e) => {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+        const text = document.querySelector('input').value;
+        socket.emit('message', text);
+    }
+})
 
 // Regular Websockets
 
