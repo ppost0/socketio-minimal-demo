@@ -20,6 +20,7 @@ document.querySelector('input').addEventListener('keyup', (e) => {
     if (e.key === 'Enter' || e.keyCode === 13) {
         const text = document.querySelector('input').value;
         socket.emit('message', text);
+        document.querySelector('input').value = '';
     }
 })
 
